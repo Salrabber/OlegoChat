@@ -3,12 +3,14 @@ import { Link, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Login from "./components/Login";
 import Chat from "./components/Chat";
+import { BrowserRouter } from "react-router-dom";
+
 
 function App() {
   const user = false;
 
   return (
-    <>
+    <BrowserRouter>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           {user ? (
@@ -36,7 +38,7 @@ function App() {
           </Routes>
         </div>
       </div>
-    </>
+    </BrowserRouter>
   );
 }
 
