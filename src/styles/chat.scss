@@ -1,0 +1,14 @@
+.chat__inner {
+    display: flex;
+    margin-top: 10px;
+  .chats {
+    width: 30%;
+    height: 100%;
+    // background-color: blue;
+    overflow-y: auto;
+  }
+  .messages {
+    width: 70%;
+    background: yellow;
+  }
+}

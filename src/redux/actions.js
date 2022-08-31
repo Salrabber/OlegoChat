@@ -1,8 +1,9 @@
-import { CREATE_CHAT } from "./types";
+import { CREATE_MSG } from "./types";
 
-export function createChat(chat){
+export function createMessage(chat, msg){
     return{
-        type: CREATE_CHAT,
-        payload: chat
+        type: CREATE_MSG,
+        payload: msg,
+        chat: chat
     }
 }

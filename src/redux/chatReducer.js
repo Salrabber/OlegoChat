@@ -1,13 +1,20 @@
-import { CREATE_CHAT } from "./types"
+import { CREATE_MSG } from "./types"
 
 
 
-const initialState=[]
+const initialState={
+    Frodo: [{value:'Hello there'}],
+    Hodor: [{value:'Hello lad'}],
+    Korvo: [{value:'Hello pal'}],
+    User69: [{value:'Hi fuck'}]
+}
 
 export default function chatReducer(state = initialState, action){
     switch(action.type){
-        case CREATE_CHAT:
-            return {...state, state: state.concat(action.payload)}
+        case CREATE_MSG:
+            const chat = action.chat
+            const newState = state[action.chat].concat(action.payload)
+            return {...state, [chat]: [...state[chat], action.payload]}
         default: return state
     }
 }

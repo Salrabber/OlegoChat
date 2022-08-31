@@ -4,11 +4,18 @@ import "./App.scss";
 import Login from "./components/Login";
 import Chat from "./components/Chat";
 import { BrowserRouter } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux/es/exports";
+import { createMessage } from "./redux/actions";
+
 
 
 function App() {
-  const user = false;
-
+  let [user, setUser] = React.useState(false) 
+  const dispatch = useDispatch()
+  const sendMsg = () => {
+    dispatch(createMessage('Hodor', 'Hello there'))
+  }
+  const changeUser = () =>{setUser(!user)}
   return (
     <BrowserRouter>
       <nav className="navbar navbar-expand-lg bg-light">
@@ -32,6 +39,7 @@ function App() {
       <div className="container">
         <div className="wrapper">
           <h1>Welcome to App-chat</h1>
+          <button onClick={changeUser} className="btn btn-info">Hello, Hodor!</button>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/chat" element={<Chat />} />
