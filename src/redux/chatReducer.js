@@ -4,7 +4,7 @@ import { CREATE_MSG } from "./types"
 
 const initialState={
     Frodo: [{value:'Hello there'}],
-    Hodor: [{value:'Hello lad'}],
+    Hodor: [{value:'Hello lad'},{value:'What the fuck?'},{value:'No no no no'},{value:'Bruh...'},],
     Korvo: [{value:'Hello pal'}],
     User69: [{value:'Hi fuck'}]
 }

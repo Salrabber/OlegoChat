@@ -5,10 +5,30 @@
     width: 30%;
     height: 100%;
     // background-color: blue;
-    overflow-y: auto;
+    // overflow-y: clip;
+    .contact{
+      cursor: pointer
+    }
   }
   .messages {
     width: 70%;
     background: yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .list{
+      overflow-y: auto;
+      max-height: 330px;
+
+    }
+    .sendForm{
+      background-color: blue;
+      display: flex;
+      justify-content: space-between;
+      .typeMsgInput{
+        width: 100%;
+      }
+    }
   }
 }
