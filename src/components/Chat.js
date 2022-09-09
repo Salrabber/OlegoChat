@@ -6,52 +6,96 @@ import Messages from "./Messages";
 import { useState } from "react";
 import { createMessage } from "../redux/actions";
 
-
 export default function Chat() {
+  const [value, setValue] = useState("");
+  const [active, setActive] = useState("Hodor");
 
-  const [value, setValue] = useState('')
-  const [active, setActive] = useState('Hodor')
+  const dispatch = useDispatch();
 
-  const dispatch = useDispatch()
+  const chats = useSelector((state) => state.global.chatStore);
+  let data = [];
+  let id = 0;
+  for (let key in chats) {
+    data = data.concat({ name: key, message: chats[key][0].value, id: id });
+    id++;
+  }
 
-    const chats = useSelector(state => state.global.chatStore)
-    let data = []
-    let id = 0
-    for (let key in chats){
-        data = data.concat({name: key, message: chats[key][0].value, id: id })
-        id++
-    }
+  const submitHandler = (event) => {
+    setValue(event.target.value);
+  };
 
-    const submitHandler = (event) => {
-      setValue(event.target.value)
-    }
-    
-    const sendMessage = (event) => {
-      event.preventDefault()
-      dispatch(createMessage('Hodor', {value: value}))
-      setValue('')
-    }
+  const sendMessage = async (event) => {
+    const currentDate = new Date().toLocaleString().split(", ");
+    const date = currentDate[0];
+    const time = currentDate[1];
+    event.preventDefault();
+    dispatch(
+      createMessage(active, {
+        user: "User",
+        value: value,
+        time: time,
+        date: date,
+      })
+    );
+    setValue("");
+    fetch("https://api.chucknorris.io/jokes/random")
+      .then((msg) => msg.json())
+      .then((msg) =>
+        setTimeout(() => {
+          dispatch(
+            createMessage(active, {
+              user: "chatBot",
+              value: msg.value,
+              time: time,
+              date: date,
+            })
+          );
+        }, 2000)
+      );
+  };
 
-    const activeChat = (name) =>{
-      setActive(name)
-    }
+  const activeChat = (name) => {
+    setActive(name);
+  };
+
+  // const chuckJoke = () => {
+  //   fetch('https://api.chucknorris.io/jokes/random')
+  //   .then(msg => msg.json())
+  //   .then(msg => {return msg.value})
+  // }
 
   return (
     <div className="chat__inner">
       <div className="chats">
-       {data.map((chat,index) => {
-        return(
-           <Contact className="contact" onClick={console.log('fuck')} data={{name: chat.name, message: chat.message}} key={index} />
-        )
-       })}
+        {data.map((chat, index) => {
+          return (
+            <div
+              className="contact"
+              onClick={() => activeChat(chat.name)}
+              key={index}
+            >
+              <Contact
+                data={{ name: chat.name, message: chat.message }}
+                key={index}
+              />
+            </div>
+          );
+        })}
       </div>
       <div className="messages">
         <div className="list">
           <Messages chat={active} />
         </div>
         <form onSubmit={sendMessage} className="sendForm">
-          <input onChange={submitHandler} value={value} type='text' className="typeMsgInput"></input>
-          <button onClick={sendMessage} className="sendMsgBtn">Send</button>
+          <input
+            onChange={submitHandler}
+            value={value}
+            type="text"
+            className="typeMsgInput"
+          ></input>
+          <button onClick={sendMessage} className="sendMsgBtn">
+            Send
+          </button>
         </form>
       </div>
     </div>
