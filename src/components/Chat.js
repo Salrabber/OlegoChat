@@ -13,6 +13,7 @@ export default function Chat() {
   const dispatch = useDispatch();
 
   const chats = useSelector((state) => state.global.chatStore);
+
   let data = [];
   let id = 0;
   for (let key in chats) {
@@ -40,8 +41,8 @@ export default function Chat() {
     setValue("");
     fetch("https://api.chucknorris.io/jokes/random")
       .then((msg) => msg.json())
-      .then((msg) =>
-        setTimeout(() => {
+      .then(
+        (msg) => {
           dispatch(
             createMessage(active, {
               user: "chatBot",
@@ -50,7 +51,17 @@ export default function Chat() {
               date: date,
             })
           );
-        }, 2000)
+        }
+        // setTimeout(() => {
+        //   dispatch(
+        //     createMessage(active, {
+        //       user: "chatBot",
+        //       value: msg.value,
+        //       time: time,
+        //       date: date,
+        //     })
+        //   );
+        // }, 2000)
       );
   };
 
@@ -69,7 +80,7 @@ export default function Chat() {
               key={index}
             >
               <Contact
-                data={{ name: chat.name, message: chat.message }}
+                data={{ name: chat.name, message: chat.message, selected: active }}
                 key={index}
               />
             </div>
@@ -77,8 +88,8 @@ export default function Chat() {
         })}
       </div>
       <div className="messages">
-      <h1>{active}</h1>
-        <div className="list">
+        <h1>{active}</h1>
+        <div className="list card">
           <Messages chat={active} />
         </div>
         <form onSubmit={sendMessage} className="sendForm">

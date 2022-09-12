@@ -8,7 +8,6 @@ export default function Messages({chat}) {
 
   return (
     <>
-        {/* <h1>{chat}</h1> */}
       <div className="messageList">
         {messages[chat].map((msg, index) => {
           return(
