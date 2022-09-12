@@ -1,14 +1,22 @@
-.alignLeft{
-    text-align: left;
+.alignLeft {
+  text-align: left;
+  max-width: 500px;
 }
 
-.alignRight{
-    text-align: right;
+.alignRight {
+  text-align: right;
 }
 
-.inner{
-    .message{
-        // border: 1px solid blue;
-        // border-radius: 10%;
-    }
+.inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  .message {
+    margin-bottom: 0px;
+  }
+  .date {
+    font-size: 12px;
+    padding-top: 0;
+    margin-bottom: 5px;
+  }
 }

@@ -58,12 +58,6 @@ export default function Chat() {
     setActive(name);
   };
 
-  // const chuckJoke = () => {
-  //   fetch('https://api.chucknorris.io/jokes/random')
-  //   .then(msg => msg.json())
-  //   .then(msg => {return msg.value})
-  // }
-
   return (
     <div className="chat__inner">
       <div className="chats">
@@ -83,6 +77,7 @@ export default function Chat() {
         })}
       </div>
       <div className="messages">
+      <h1>{active}</h1>
         <div className="list">
           <Messages chat={active} />
         </div>
@@ -91,9 +86,9 @@ export default function Chat() {
             onChange={submitHandler}
             value={value}
             type="text"
-            className="typeMsgInput"
+            className="typeMsgInput form-control"
           ></input>
-          <button onClick={sendMessage} className="sendMsgBtn">
+          <button onClick={sendMessage} className="sendMsgBtn btn btn-info">
             Send
           </button>
         </form>

@@ -18,11 +18,7 @@ function App() {
     setUser(!user);
   };
 
-  const date = () => {
-    const date = new Date().toLocaleString()
-    const res = date.split(', ')
-    console.log(res)
-  }
+
 
   return (
     <BrowserRouter>
@@ -34,9 +30,9 @@ function App() {
                 Open chat
               </Link>
               <h1>Welcome to App-chat</h1>
-              <button onClick={date} type="button" className="btn btn-danger">
+              <Link className="btn btn-danger" to="/">
                 Log out
-              </button>
+              </Link>
             </>
           ) : (
             <>
@@ -59,6 +55,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/" />
           </Routes>
         </div>
       </div>

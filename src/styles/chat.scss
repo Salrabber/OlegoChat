@@ -1,34 +1,36 @@
 .chat__inner {
     display: flex;
-    // margin-top: 10px;
     height: 550px;
   .chats {
     width: 30%;
     height: 100%;
-    // background-color: blue;
-    // overflow-y: clip;
     .contact{
       cursor: pointer
     }
   }
   .messages {
     width: 70%;
-    background: yellow;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-
+    justify-content: space-between; 
+    height: 550px; 
     .list{
       overflow-y: auto;
-      max-height: 330px;
-
+      height: 500px;
     }
     .sendForm{
-      background-color: blue;
       display: flex;
       justify-content: space-between;
       .typeMsgInput{
         width: 100%;
+      }
+      .sendMsgBtn{
+        height: 100%;
+        width: 100px;
+        margin-left: 20px;
+        position: relative;
+        bottom: 10px;
+        padding-top: 10px;
       }
     }
   }
