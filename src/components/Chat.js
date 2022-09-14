@@ -15,10 +15,8 @@ export default function Chat() {
   const chats = useSelector((state) => state.global.chatStore);
 
   let data = [];
-  let id = 0;
   for (let key in chats) {
-    data = data.concat({ name: key, message: chats[key][0].value, id: id });
-    id++;
+    data = data.concat({ name: key, message: chats[key][0].value });
   }
 
   const submitHandler = (event) => {
@@ -63,6 +61,10 @@ export default function Chat() {
         //   );
         // }, 2000)
       );
+    // if(data[0].name !== active){
+    //   data.filter(contact => contact.name !== active)
+
+    // }
   };
 
   const activeChat = (name) => {
@@ -80,7 +82,11 @@ export default function Chat() {
               key={index}
             >
               <Contact
-                data={{ name: chat.name, message: chat.message, selected: active }}
+                data={{
+                  name: chat.name,
+                  message: chats[chat.name][chats[chat.name].length-1].value,
+                  selected: active,
+                }}
                 key={index}
               />
             </div>

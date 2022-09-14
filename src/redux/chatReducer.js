@@ -7,8 +7,6 @@ const initialState={
     User69: [{value:'Hi fuck', time: '04:20'}]
 }
 
- 
-
 
 export default function chatReducer(state = initialState, action){
     switch(action.type){
