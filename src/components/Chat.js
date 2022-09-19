@@ -16,7 +16,7 @@ export default function Chat() {
 
   let data = [];
   for (let key in chats) {
-    data = data.concat({ name: key, message: chats[key][0].value });
+    data = data.concat({ name: key });
   }
 
   const submitHandler = (event) => {
@@ -28,19 +28,19 @@ export default function Chat() {
     const date = currentDate[0];
     const time = currentDate[1];
     event.preventDefault();
-    dispatch(
-      createMessage(active, {
-        user: "User",
-        value: value,
-        time: time,
-        date: date,
-      })
-    );
-    setValue("");
-    fetch("https://api.chucknorris.io/jokes/random")
-      .then((msg) => msg.json())
-      .then(
-        (msg) => {
+    if (value) {
+      dispatch(
+        createMessage(active, {
+          user: "User",
+          value: value,
+          time: time,
+          date: date,
+        })
+      );
+      setValue("");
+      fetch("https://api.chucknorris.io/jokes/random")
+        .then((msg) => msg.json())
+        .then((msg) => {
           dispatch(
             createMessage(active, {
               user: "chatBot",
@@ -49,18 +49,20 @@ export default function Chat() {
               date: date,
             })
           );
-        }
-        // setTimeout(() => {
-        //   dispatch(
-        //     createMessage(active, {
-        //       user: "chatBot",
-        //       value: msg.value,
-        //       time: time,
-        //       date: date,
-        //     })
-        //   );
-        // }, 2000)
-      );
+        });
+    }
+
+    // setTimeout(() => {
+    //   dispatch(
+    //     createMessage(active, {
+    //       user: "chatBot",
+    //       value: msg.value,
+    //       time: time,
+    //       date: date,
+    //     })
+    //   );
+    // }, 2000)
+
     // if(data[0].name !== active){
     //   data.filter(contact => contact.name !== active)
 
@@ -84,7 +86,7 @@ export default function Chat() {
               <Contact
                 data={{
                   name: chat.name,
-                  message: chats[chat.name][chats[chat.name].length-1].value,
+                  message: chats[chat.name][chats[chat.name].length - 1].value,
                   selected: active,
                 }}
                 key={index}

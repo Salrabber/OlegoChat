@@ -1,7 +1,15 @@
-.card-body{
-    text-align: left;
-}
 
-.selected{
+
+.card {
+    height: 100px;
+  .card-body {
+    text-align: left;
+  }
+
+  .selected {
     background-color: skyblue;
+  }
+}
+.pad{
+    padding-top: 5px;
 }

@@ -14,11 +14,20 @@ function App() {
   const sendMsg = () => {
     dispatch(createMessage("Hodor", "Hello there"));
   };
+
   const changeUser = () => {
     setUser(!user);
   };
 
+  const loginUser = () => {
+    // console.log('it works')
+    setUser(true);
+  };
 
+  const loginOut = () => {
+    // console.log('it works')
+    setUser(false);
+  };
 
   return (
     <BrowserRouter>
@@ -26,19 +35,26 @@ function App() {
         <div className="container-fluid">
           {user ? (
             <>
-              <Link className="btn btn-success" to="/chat">
-                Open chat
-              </Link>
+              <div className="block">
+                <Link className="btn btn-success" to="/chat">
+                  Open chat
+                </Link>
+              </div>
+
               <h1>Welcome to App-chat</h1>
-              <Link className="btn btn-danger" to="/">
+              <Link
+                onClick={() => loginOut()}
+                className="btn btn-danger"
+                to="/"
+              >
                 Log out
               </Link>
             </>
           ) : (
             <>
-              <Link className="btn btn-success" to="/chat">
+              <button disabled='true' className="btn btn-success block">
                 Open chat
-              </Link>
+              </button>
               <h1>Welcome to App-chat</h1>
               <Link className="btn btn-primary" to="/login">
                 Login
@@ -49,11 +65,11 @@ function App() {
       </nav>
       <div className="container">
         <div className="wrapper">
-          <button onClick={changeUser} className="btn btn-info">
+          {/* <button onClick={changeUser} className="btn btn-info">
             Hello, Hodor!
-          </button>
+          </button> */}
           <Routes>
-            <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login login={loginUser} />} />
             <Route path="/chat" element={<Chat />} />
             <Route path="/" />
           </Routes>

@@ -1,7 +1,15 @@
+
+.navbar{
+    margin-bottom: 50px;
+}
+
 .wrapper{
     align-items: center;
     text-align: center;
     .btn-info{
         margin: 10px 0;
+    }
+    .block{
+        display: block;
     }
 }

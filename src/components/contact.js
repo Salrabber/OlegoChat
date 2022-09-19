@@ -5,8 +5,8 @@ export default function Contact({ data }) {
   const selected = data.selected === data.name;
 
   return (
-    <div className="card">
-      <div className={selected ? 'selected':''}>
+    <div className="card card-wrapper">
+      <div className={selected ? "selected" : ""}>
         <div className="card-body">
           <h5 className="card-title">{data.name}</h5>
           <p className="card-text">{data.message}</p>
