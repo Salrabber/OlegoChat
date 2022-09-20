@@ -5,7 +5,7 @@ export default function Contact({ data }) {
   const selected = data.selected === data.name;
 
   return (
-    <div className="card card-wrapper">
+    <div className="card">
       <div className={selected ? "selected" : ""}>
         <div className="card-body">
           <h5 className="card-title">{data.name}</h5>
@@ -15,3 +15,5 @@ export default function Contact({ data }) {
     </div>
   );
 }
+
+
