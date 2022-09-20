@@ -13,9 +13,6 @@ export default function chatReducer(state = initialState, action){
         case CREATE_MSG:
             const chat = action.chat
             return {...state, [chat]: [...state[chat], action.payload]}
-        // case SWAP_MSG:
-        //     delete state[action.chat]
-        //     return {...state, }
         default: return state
     }
 }

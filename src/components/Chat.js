@@ -62,11 +62,6 @@ export default function Chat() {
     //     })
     //   );
     // }, 2000)
-
-    // if(data[0].name !== active){
-    //   data.filter(contact => contact.name !== active)
-
-    // }
   };
 
   const activeChat = (name) => {

@@ -1,31 +1,26 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Login from "./components/Login";
 import Chat from "./components/Chat";
 import { BrowserRouter } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { createMessage } from "./redux/actions";
-import matchers from "@testing-library/jest-dom/matchers";
+// import matchers from "@testing-library/jest-dom/matchers";
 
 function App() {
   let [user, setUser] = React.useState(false);
-  const dispatch = useDispatch();
-  const sendMsg = () => {
-    dispatch(createMessage("Hodor", "Hello there"));
-  };
+  // const sendMsg = () => {
+  //   dispatch(createMessage("Hodor", "Hello there"));
+  // };
 
-  const changeUser = () => {
-    setUser(!user);
-  };
+  // const changeUser = () => {
+  //   setUser(!user);
+  // };
 
   const loginUser = () => {
-    // console.log('it works')
     setUser(true);
   };
 
   const loginOut = () => {
-    // console.log('it works')
     setUser(false);
   };
 
@@ -65,9 +60,6 @@ function App() {
       </nav>
       <div className="container">
         <div className="wrapper">
-          {/* <button onClick={changeUser} className="btn btn-info">
-            Hello, Hodor!
-          </button> */}
           <Routes>
             <Route path="/login" element={<Login login={loginUser} />} />
             <Route path="/chat" element={<Chat />} />
