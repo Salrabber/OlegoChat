@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/OlegoChat/static/css/main.bd552f0e.css",
+    "main.js": "/OlegoChat/static/js/main.618d0833.js",
+    "index.html": "/OlegoChat/index.html",
+    "main.bd552f0e.css.map": "/OlegoChat/static/css/main.bd552f0e.css.map",
+    "main.618d0833.js.map": "/OlegoChat/static/js/main.618d0833.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bd552f0e.css",
+    "static/js/main.618d0833.js"
+  ]
+}
